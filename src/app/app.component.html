@@ -18,8 +18,10 @@
       </mat-expansion-panel>
     </mat-accordion>
   </mat-drawer>
-
-  <button type="button" mat-button (click)="drawer.toggle()">
-    Options
-  </button>
+  <mat-drawer-content class="joul-content">
+    <router-outlet></router-outlet>
+    <button type="button" mat-button (click)="drawer.toggle()" class="nav-toggle">
+      Options
+    </button>
+  </mat-drawer-content>
 </mat-drawer-container>
