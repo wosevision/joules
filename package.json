@@ -1,6 +1,6 @@
 {
   "name": "joules",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -12,12 +12,14 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^6.0.0-rc.1",
+    "@angular/animations": "^6.0.0-rc.5",
+    "@angular/cdk": "^6.0.0-rc.13",
     "@angular/common": "^6.0.0-rc.1",
     "@angular/compiler": "^6.0.0-rc.1",
     "@angular/core": "^6.0.0-rc.1",
     "@angular/forms": "^6.0.0-rc.1",
     "@angular/http": "^6.0.0-rc.1",
+    "@angular/material": "^6.0.0-rc.13",
     "@angular/platform-browser": "^6.0.0-rc.1",
     "@angular/platform-browser-dynamic": "^6.0.0-rc.1",
     "@angular/router": "^6.0.0-rc.1",
@@ -45,5 +47,24 @@
     "protractor": "~5.3.0",
     "ts-node": "~5.0.1",
     "tslint": "~5.9.1"
-  }
+  },
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0-rc.5.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/wosevision/joules.git"
+  },
+  "keywords": [
+    "angular",
+    "node",
+    "iot",
+    "raspberry",
+    "pi",
+    "display"
+  ],
+  "author": "wose <jacksonteather@hotmail.com>",
+  "bugs": {
+    "url": "https://github.com/wosevision/joules/issues"
+  },
+  "homepage": "https://github.com/wosevision/joules#readme"
 }
