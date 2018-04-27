@@ -6,7 +6,7 @@
     "joules": {
       "root": "",
       "projectType": "application",
-      "prefix": "app",
+      "prefix": "joul",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
