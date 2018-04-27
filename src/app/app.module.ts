@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { MaterialModule } from './shared/material.module';
-import { MethodsModule } from './methods/methods.module';
+import { TextDisplayModule } from './text-display/text-display.module';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -15,7 +15,7 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    MethodsModule,
+    TextDisplayModule,
     RouterModule.forRoot(
       [
         {

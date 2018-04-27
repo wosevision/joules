@@ -11,7 +11,7 @@
           </mat-panel-description>
         </mat-expansion-panel-header>
         <mat-nav-list>
-          <a mat-list-item *ngFor="let item of category.items" (click)="go(item.link)">
+          <a mat-list-item *ngFor="let item of category.items" [routerLink]="[category.id, item.id]">
             {{ item.label }}
           </a>
         </mat-nav-list>
