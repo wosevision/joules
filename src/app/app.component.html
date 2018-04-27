@@ -1,4 +1,25 @@
-<mat-sidenav-container class="example-container">
-  <mat-sidenav mode="side" opened>Sidenav content</mat-sidenav>
-  <mat-sidenav-content>Main content</mat-sidenav-content>
-</mat-sidenav-container>
+<mat-drawer-container class="joul-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let category of navItems">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ category.label }}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{ category.description }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item *ngFor="let item of category.items" (click)="go(item.link)">
+            {{ item.label }}
+          </a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-drawer>
+
+  <button type="button" mat-button (click)="drawer.toggle()">
+    Options
+  </button>
+</mat-drawer-container>
