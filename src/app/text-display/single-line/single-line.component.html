@@ -1,3 +1,8 @@
-<p>
-  single-line works!
-</p>
+<form class="single-line-container mat-display-1">
+  <mat-form-field class="single-line-field">
+    <input matInput placeholder="Text to display" autofocus [formControl]="textValue">
+    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</form>
