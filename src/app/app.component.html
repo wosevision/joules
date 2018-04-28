@@ -21,7 +21,7 @@
   <mat-drawer-content class="joul-content">
     <router-outlet></router-outlet>
     <button type="button" mat-button (click)="drawer.toggle()" class="nav-toggle">
-      Options
+      <mat-icon>{{ drawer.opened ? 'chevron_left' : 'chevron_right' }}</mat-icon> Options
     </button>
   </mat-drawer-content>
 </mat-drawer-container>
