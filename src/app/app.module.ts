@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
@@ -16,6 +17,7 @@ import { HomeComponent } from './home/home.component';
     BrowserAnimationsModule,
     MaterialModule,
     TextDisplayModule,
+    HttpClientModule,
     RouterModule.forRoot(
       [
         {

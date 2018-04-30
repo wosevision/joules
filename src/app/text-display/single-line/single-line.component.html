@@ -1,8 +1,13 @@
 <form class="single-line-container mat-display-1">
   <mat-form-field class="single-line-field">
-    <input matInput placeholder="Text to display" autofocus [formControl]="textValue">
+    <input matInput placeholder="Text to display" autofocus [formControl]="fieldValue">
     <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
       <mat-icon>close</mat-icon>
     </button>
+    <mat-error *ngIf="fieldValue.hasError('alphanumeric')">
+      Message must be completely alphanumeric! (letters, numbers, simple symbols)
+    </mat-error>
   </mat-form-field>
+  <br/>
+  <button mat-stroked-button color="primary" (click)="submitText()" [disabled]="fieldValue.disabled">Fire in the hole!</button>
 </form>
