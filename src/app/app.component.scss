@@ -12,6 +12,10 @@
     display: flex;
     flex: 1 1 100%;
   }
+  &-sidenav {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .nav-toggle {
