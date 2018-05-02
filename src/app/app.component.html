@@ -20,6 +20,9 @@
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
+    <button mat-button (click)="clear()">
+      <mat-icon>delete</mat-icon>
+    </button>
   </mat-drawer>
   <mat-drawer-content class="joul-content">
     <router-outlet></router-outlet>

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 export interface NavItem {
   id: string;
@@ -57,4 +60,20 @@ export class AppComponent {
       items: [{ id: '', label: 'Twitter hashtag', link: '' }]
     }
   ];
+
+  constructor(private http: HttpClient) {}
+
+  clear() {
+    this.http
+      .post<{ message?; error? }>('/api/clear', {})
+      .pipe(
+        catchError(result => {
+          if (result.error) {
+            console.error(result.error);
+          }
+          return of(result.message ? result : { message: 'Failed' });
+        })
+      )
+      .subscribe(result => console.log(result));
+  }
 }
