@@ -6,6 +6,8 @@ import { MatSnackBar } from '@angular/material';
 import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+import { MethodsService } from '../../core/methods.service';
+
 export function alphanumeric(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } => {
     const isAlphanumeric = /^[a-zA-Z0-9_\ ~!@#$%^&*()\-+=<>?/,.\\[{\]}:;"'|]*$/.test(control.value);
@@ -28,7 +30,7 @@ export class SingleLineComponent implements OnInit {
   fieldValue = new FormControl('', alphanumeric());
   value;
 
-  constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
+  constructor(private methods: MethodsService) {}
 
   ngOnInit() {
     this.fieldValue.valueChanges.subscribe(console.log);
@@ -37,20 +39,9 @@ export class SingleLineComponent implements OnInit {
   submitText() {
     if (this.fieldValue.valid) {
       this.fieldValue.disable();
-      this.http
-        .post<{ message?; error? }>('/api/single-line', { message: this.fieldValue.value })
-        .pipe(
-          catchError(result => {
-            if (result.error) {
-              console.error(result.error);
-            }
-            return of(result.message ? result : { message: 'Failed' });
-          })
-        )
-        .subscribe(value => {
-          this.snackBar.open(value.message, 'Okie dokie', { duration: 3000 });
-          this.fieldValue.enable();
-        });
+      this.methods
+        .send('single-line', { message: this.fieldValue.value })
+        .subscribe(value => this.fieldValue.enable());
     }
   }
 }

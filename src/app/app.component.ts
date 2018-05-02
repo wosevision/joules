@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { MethodsService } from './core/methods.service';
 
 export interface NavItem {
   id: string;
@@ -61,19 +59,9 @@ export class AppComponent {
     }
   ];
 
-  constructor(private http: HttpClient) {}
+  constructor(private methods: MethodsService) {}
 
   clear() {
-    this.http
-      .post<{ message?; error? }>('/api/clear', {})
-      .pipe(
-        catchError(result => {
-          if (result.error) {
-            console.error(result.error);
-          }
-          return of(result.message ? result : { message: 'Failed' });
-        })
-      )
-      .subscribe(result => console.log(result));
+    this.methods.send('clear').subscribe(result => console.log(result));
   }
 }
