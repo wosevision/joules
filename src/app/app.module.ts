@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from './shared/material.module';
 import { CoreModule } from './core/core.module';
 
-import { TextDisplayModule } from './text-display/text-display.module';
+// import { TextDisplayModule } from './text-display/text-display.module';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -19,13 +19,17 @@ import { HomeComponent } from './home/home.component';
     BrowserAnimationsModule,
     MaterialModule,
     CoreModule,
-    TextDisplayModule,
+    // TextDisplayModule,
     HttpClientModule,
     RouterModule.forRoot(
       [
         {
           path: '',
           component: HomeComponent
+        },
+        {
+          path: 'text-display',
+          loadChildren: './text-display/text-display.module#TextDisplayModule'
         }
       ],
       { enableTracing: true }

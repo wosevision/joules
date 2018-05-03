@@ -13,7 +13,7 @@ import { SingleLineComponent } from './single-line/single-line.component';
     MaterialModule,
     RouterModule.forChild([
       {
-        path: 'text-display',
+        path: '',
         children: [
           {
             path: 'single-line',
