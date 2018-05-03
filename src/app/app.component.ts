@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MethodsService } from './core/methods.service';
+import { MethodsService, Method } from './core/methods.service';
 
 export interface NavItem {
   id: string;
@@ -22,7 +22,7 @@ export class AppComponent {
       label: 'Text display',
       description: 'Show words and characters',
       items: [
-        { id: 'single-line', label: 'Single line', link: '' },
+        { id: Method.SingleLine, label: 'Single line', link: '' },
         { id: '', label: 'Multi-line', link: '' },
         { id: '', label: 'Flashing border', link: '' }
       ]
@@ -62,6 +62,6 @@ export class AppComponent {
   constructor(private methods: MethodsService) {}
 
   clear() {
-    this.methods.send('clear').subscribe(result => console.log(result));
+    this.methods.send(Method.Clear).subscribe(result => console.log(result));
   }
 }

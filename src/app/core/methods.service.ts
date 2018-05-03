@@ -5,15 +5,20 @@ import { MatSnackBar } from '@angular/material';
 import { of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
+export const enum Method {
+  Clear = 'clear',
+  SingleLine = 'single-line'
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class MethodsService {
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
-  send(path: string, message?) {
+  send(method: Method, message?) {
     return this.http
-      .post<{ message?; error?: Error }>(`/api/${path}`, message ? { message } : {})
+      .post<{ message?; error?: Error }>(`/api/${method}`, message ? { message } : {})
       .pipe(
         catchError(result => {
           if (result.error) {

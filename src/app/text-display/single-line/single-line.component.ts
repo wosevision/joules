@@ -6,7 +6,7 @@ import { MatSnackBar } from '@angular/material';
 import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { MethodsService } from '../../core/methods.service';
+import { MethodsService, Method } from '../../core/methods.service';
 
 export function alphanumeric(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } => {
@@ -40,7 +40,7 @@ export class SingleLineComponent implements OnInit {
     if (this.fieldValue.valid) {
       this.fieldValue.disable();
       this.methods
-        .send('single-line', { message: this.fieldValue.value })
+        .send(Method.SingleLine, { message: this.fieldValue.value })
         .subscribe(value => this.fieldValue.enable());
     }
   }
