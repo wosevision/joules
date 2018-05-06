@@ -1,0 +1,10 @@
+[
+  {
+    "group": "neopixel",
+    "paths": ["method"]
+  },
+  {
+    "group": "scrollphat",
+    "paths": ["clear", "single-line", "multi-line", "flashing-border"]
+  }
+]

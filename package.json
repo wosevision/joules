@@ -4,11 +4,12 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.config.json",
+    "start": "npm run server & ng serve --proxy-config proxy.config.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "server": "nodemon server"
   },
   "private": true,
   "dependencies": {
@@ -49,20 +50,14 @@
     "ts-node": "~5.0.1",
     "tslint": "~5.9.1"
   },
-  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0-rc.5.",
+  "description":
+    "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0-rc.5.",
   "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/wosevision/joules.git"
   },
-  "keywords": [
-    "angular",
-    "node",
-    "iot",
-    "raspberry",
-    "pi",
-    "display"
-  ],
+  "keywords": ["angular", "node", "iot", "raspberry", "pi", "display"],
   "author": "wose <jacksonteather@hotmail.com>",
   "bugs": {
     "url": "https://github.com/wosevision/joules/issues"
