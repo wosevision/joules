@@ -7,7 +7,8 @@ import { catchError, tap } from 'rxjs/operators';
 
 export const enum Method {
   Clear = 'clear',
-  SingleLine = 'single-line'
+  SingleLine = 'single-line',
+  Clock = 'clock'
 }
 
 @Injectable({

@@ -44,7 +44,7 @@ export class AppComponent {
       description: 'Represent data visually',
       items: [
         { id: '', label: 'Cellular automata', link: '' },
-        { id: '', label: 'Clock', link: '' },
+        { id: Method.Clock, label: 'Clock', link: '' },
         { id: '', label: 'CPU usage', link: '' },
         { id: '', label: 'Forest fire', link: '' },
         { id: '', label: 'Graph', link: '' },
