@@ -1,8 +1,13 @@
-const PythonShell = require('python-shell');
+const path = require('path');
 const express = require('express');
+const Gpio = require('onoff').Gpio;
+const PythonShell = require('python-shell');
+
 const router = express.Router();
 
 const routes = require('../common/routes.json');
+
+const mockResponse = (real, mock) => Gpio.accessible ? real() : mock();
 
 let currentScript;
 const cleanup = () => currentScript && currentScript.terminate && currentScript.terminate();
@@ -12,15 +17,23 @@ const monitor = (script, response) => {
 };
 
 routes.forEach(({ group, paths }) =>
-  paths.map(path =>
-    router.post(`/${path}`, (req, res) => {
-      cleanup();
-      const args = req.body.message;
-      currentScript = PythonShell.run(
-        `./scripts/${group}/${path}.py`,
-        { args },
-        err => (err && res.status(400).send(err)) || res.status(200).json({ success: true })
-      );
+  paths.map(route =>
+    router.post(`/${route}`, (req, res) => {
+      mockResponse(() => {
+        cleanup();
+        const args = req.body.message;
+        currentScript = PythonShell.run(
+          `${route}.py`,
+          { args, scriptPath: path.resolve(path.join(__dirname, 'scripts', group)), mode: 'binary' },
+          err => {
+            if (err) {
+              console.error(err);
+              res.status(400).send(err)
+            }
+            res.status(200).json({ success: true });
+          }
+        );
+      }, () => setTimeout(() => res.status(200).json({ success: true, mock: true }), 1500));
     })
   )
 );

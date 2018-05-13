@@ -64,4 +64,8 @@ export class AppComponent {
   clear() {
     this.methods.send(Method.Clear).subscribe(result => console.log(result));
   }
+
+  test() {
+    this.methods.send(Method.Mock).subscribe(result => console.log(result));
+  }
 }

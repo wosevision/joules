@@ -19,6 +19,7 @@ def autoscroll(interval=0.1):
     # Scroll the buffer content
     scrollphathd.scroll()
 
+
 print("""
 Scroll pHAT HD: Hello World
 Scrolls "Hello World" across the screen

@@ -6,6 +6,7 @@ import { of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
 export const enum Method {
+  Mock = 'mock',
   Clear = 'clear',
   SingleLine = 'single-line',
   Clock = 'clock'

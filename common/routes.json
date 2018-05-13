@@ -1,5 +1,9 @@
 [
   {
+    "group": "mock",
+    "paths": ["mock"]
+  },
+  {
     "group": "neopixel",
     "paths": ["method"]
   },
