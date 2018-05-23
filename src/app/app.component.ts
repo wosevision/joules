@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { MethodsService, Method } from './core/methods.service';
 
+import axis from 'axis.js';
+import routes from '../../common/routes.json';
+
 export interface NavItem {
   id: string;
   label: string;
@@ -16,48 +19,16 @@ export type NavItems = NavItem[];
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  navItems: NavItems = [
-    {
-      id: 'text-display',
-      label: 'Text display',
-      description: 'Show words and characters',
-      items: [
-        { id: Method.SingleLine, label: 'Single line', link: '' },
-        { id: '', label: 'Multi-line', link: '' },
-        { id: '', label: 'Flashing border', link: '' }
-      ]
-    },
-    {
-      id: 'animation',
-      label: 'Animation',
-      description: 'Create eye-catching effects',
-      items: [
-        { id: '', label: 'Plasma', link: '' },
-        { id: '', label: 'Precipitation', link: '' },
-        { id: '', label: 'Robot mouth', link: '' },
-        { id: '', label: 'Swirl', link: '' }
-      ]
-    },
-    {
-      id: 'visualization',
-      label: 'Visualization',
-      description: 'Represent data visually',
-      items: [
-        { id: '', label: 'Cellular automata', link: '' },
-        { id: Method.Clock, label: 'Clock', link: '' },
-        { id: '', label: 'CPU usage', link: '' },
-        { id: '', label: 'Forest fire', link: '' },
-        { id: '', label: 'Graph', link: '' },
-        { id: '', label: 'Temperature', link: '' }
-      ]
-    },
-    {
-      id: 'connected',
-      label: 'Connected',
-      description: 'Use things from the internet',
-      items: [{ id: '', label: 'Twitter hashtag', link: '' }]
-    }
-  ];
+  navItems: NavItems = routes
+    .find(path => path.group === 'scrollphat').paths
+    .reduce(
+      (final, path) => axis.isObject(path) ? [...final, {
+        id: path.group,
+        description: path.description,
+        items: path.paths
+      }] : final,
+      []
+    );
 
   constructor(private methods: MethodsService) {}
 
