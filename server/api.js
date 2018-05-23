@@ -7,7 +7,7 @@ const router = express.Router();
 
 const routes = require('../common/routes.json');
 
-const mockResponse = (real, mock) => Gpio.accessible ? real() : mock();
+const mockResponse = (real, mock) => Gpio.accessible ? real() : () => setTimeout(mock, 1500);
 
 let currentScript;
 const cleanup = () => currentScript && currentScript.terminate && currentScript.terminate();
@@ -19,21 +19,37 @@ const monitor = (script, response) => {
 routes.forEach(({ group, paths }) =>
   paths.map(route =>
     router.post(`/${route}`, (req, res) => {
-      mockResponse(() => {
-        cleanup();
-        const args = req.body.message;
-        currentScript = PythonShell.run(
-          `${route}.py`,
-          { args, scriptPath: path.resolve(path.join(__dirname, 'scripts', group)), mode: 'binary' },
-          err => {
-            if (err) {
-              console.error(err);
-              res.status(400).send(err)
-            }
+      const args = req.body.message;
+      console.log(args);
+      // response
+      if (args && Array.isArray(args)) {
+        mockResponse(
+          () => {
+            cleanup();
+            currentScript = PythonShell.run(
+              `${route}.py`,
+              { args, scriptPath: path.resolve(path.join(__dirname, 'scripts', group)), mode: 'binary' },
+              error => {
+                if (error) {
+                  console.error(error);
+                  res.status(500).send({ success: false, error })
+                }
+              }
+            );
             res.status(200).json({ success: true });
-          }
+          },
+          // mock
+          () =>
+            res.status(200).json({
+              success: true,
+              mock: true,
+              body: req.body
+            })
         );
-      }, () => setTimeout(() => res.status(200).json({ success: true, mock: true }), 1500));
+      } else {
+        res.status(400).send({ success: false, message: 'invalid arguments'})
+      }
+      // end response
     })
   )
 );

@@ -9,6 +9,7 @@ export const enum Method {
   Mock = 'mock',
   Clear = 'clear',
   SingleLine = 'single-line',
+  MultiLine = 'multi-line',
   Clock = 'clock'
 }
 

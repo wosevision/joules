@@ -40,7 +40,7 @@ export class SingleLineComponent implements OnInit {
     if (this.fieldValue.valid) {
       this.fieldValue.disable();
       this.methods
-        .send(Method.SingleLine, { message: this.fieldValue.value })
+        .send(Method.SingleLine, [this.fieldValue.value])
         .subscribe(value => this.fieldValue.enable());
     }
   }
