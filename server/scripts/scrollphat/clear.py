@@ -4,6 +4,9 @@ import sys
 
 import scrollphathd
 
-# Clear the display
-scrollphathd.clear()
-sys.exit()
+def clear_exit():
+    print 'Clearing display and exiting...'
+
+    # Clear the display
+    scrollphathd.clear()
+    sys.exit()

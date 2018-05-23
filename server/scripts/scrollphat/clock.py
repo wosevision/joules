@@ -14,7 +14,7 @@ Press Ctrl+C to exit!
 
 # Display a progress bar for seconds
 # Displays a dot if False
-DISPLAY_BAR = False
+DISPLAY_BAR = True
 
 # Brightness of the seconds bar and text
 BRIGHTNESS = 0.3

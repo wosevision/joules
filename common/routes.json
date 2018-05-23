@@ -9,6 +9,45 @@
   },
   {
     "group": "scrollphat",
-    "paths": ["clear", "single-line", "multi-line", "flashing-border"]
+    "paths": [
+      "clear",
+      {
+        "group": "text-display",
+        "description": "Show words and characters",
+        "paths": [
+          "single-line",
+          "multi-line",
+          "flashing-border"
+        ]
+      },
+      {
+        "group": "animation",
+        "description": "Create eye-catching effects",
+        "paths": [
+          "plasma",
+          "precipitation",
+          "robot-mouth",
+          "swirl"
+        ]
+      },
+
+      {
+        "group": "visualization",
+        "description": "Represent data visually",
+        "paths": [
+          "cellular-automata",
+          "clock",
+          "cpu-usage",
+          "forest-fire",
+          "graph",
+          "temperature"
+        ]
+      },
+      {
+        "group": "connected",
+        "description": "Use things from the internet",
+        "paths": ["twitter-hashtag"]
+      }
+    ]
   }
 ]

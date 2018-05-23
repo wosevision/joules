@@ -5,8 +5,10 @@ import threading
 
 import scrollphathd
 
+import onexit
 
-def autoscroll(interval=0.1):
+
+def autoscroll(interval=0.03):
     """Autoscroll with a thread (recursive function).
     Automatically show and scroll the buffer according to the interval value.
     :param interval: Amount of seconds (or fractions thereof), not zero
@@ -33,7 +35,7 @@ scrollphathd.rotate(degrees=180)
 
 # Write the "Hello World!" string in the buffer and
 #   set a more eye-friendly default brightness
-scrollphathd.write_string(" " + sys.argv[1], brightness=0.3)
+scrollphathd.write_string(" " + sys.argv[1], brightness=0.2)
 
 # Auto scroll using a thread
 autoscroll()
