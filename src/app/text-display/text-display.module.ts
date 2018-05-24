@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../shared/material.module';
 
 import { SingleLineComponent } from './single-line/single-line.component';
+import { MultiLineComponent } from './multi-line/multi-line.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,10 @@ import { SingleLineComponent } from './single-line/single-line.component';
             component: SingleLineComponent
           },
           {
+            path: 'multi-line',
+            component: MultiLineComponent
+          },
+          {
             path: '',
             redirectTo: '/single-line',
             pathMatch: 'full'
@@ -30,6 +35,6 @@ import { SingleLineComponent } from './single-line/single-line.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [SingleLineComponent]
+  declarations: [SingleLineComponent, MultiLineComponent]
 })
 export class TextDisplayModule {}
