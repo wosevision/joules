@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 
+import axis from 'axis.js';
+
 import { Method, MethodsService } from '../core/methods.service';
 
 @Component({
@@ -15,11 +17,13 @@ export class SubmitterComponent {
   constructor(private methods: MethodsService) { }
 
   submit() {
+    console.log('[submission]', this.field.value);
     if (this.field.valid) {
       this.field.disable();
+      const value = this.field.value;
       this.methods
-        .send(this.method, this.field.value)
-        .subscribe(value => this.field.enable());
+        .send(this.method, axis.isArray(value) ? value : [value])
+        .subscribe(() => this.field.enable());
     }
   }
 

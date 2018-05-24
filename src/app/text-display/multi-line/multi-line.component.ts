@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormArray, FormBuilder, FormControl } from '@angular/forms';
 
 import { MethodsService, Method } from '../../core/methods.service';
 import { alphanumeric } from '../../shared/validators';
@@ -9,22 +9,22 @@ import { alphanumeric } from '../../shared/validators';
   templateUrl: './multi-line.component.html',
   styleUrls: ['./multi-line.component.scss']
 })
-export class MultiLineComponent implements OnInit {
+export class MultiLineComponent {
   fields = this.fb.group({
-    fieldValues: this.fb.array([])
+    fieldValues: this.fb.array([this.newControl()])
   });
 
   get fieldValues(): FormArray {
     return this.fields.get('fieldValues') as FormArray;
   }
 
-  constructor(private fb: FormBuilder, private methods: MethodsService) {}
-
-  ngOnInit() {
-    this.fieldValues.valueChanges.subscribe(console.log);
-  }
+  constructor(private fb: FormBuilder) {}
 
   newValue() {
-    this.fieldValues.push(new FormControl('', alphanumeric()));
+    this.fieldValues.push(this.newControl());
+  }
+
+  newControl(value = '') {
+    return new FormControl(value, alphanumeric());
   }
 }

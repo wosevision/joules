@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
-import { MethodsService, Method } from '../../core/methods.service';
+import { Method } from '../../core/methods.service';
 import { alphanumeric } from '../../shared/validators';
 
 @Component({
@@ -9,13 +9,7 @@ import { alphanumeric } from '../../shared/validators';
   templateUrl: './single-line.component.html',
   styleUrls: ['./single-line.component.scss']
 })
-export class SingleLineComponent implements OnInit {
+export class SingleLineComponent {
   fieldValue = new FormControl('', alphanumeric());
   method: Method.SingleLine = Method.SingleLine;
-
-  constructor(private methods: MethodsService) {}
-
-  ngOnInit() {
-    this.fieldValue.valueChanges.subscribe(console.log);
-  }
 }
