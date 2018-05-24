@@ -1,25 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormControl, ValidatorFn, AbstractControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 
 import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { MethodsService, Method } from '../../core/methods.service';
-
-export function alphanumeric(): ValidatorFn {
-  return (control: AbstractControl): { [key: string]: any } => {
-    const isAlphanumeric = /^[a-zA-Z0-9_\ ~!@#$%^&*()\-+=<>?/,.\\[{\]}:;"'|]*$/.test(control.value);
-    return !isAlphanumeric
-      ? {
-          alphanumeric: {
-            value: control.value
-          }
-        }
-      : null;
-  };
-}
+import { alphanumeric } from '../../shared/validators';
 
 @Component({
   selector: 'joul-single-line',
