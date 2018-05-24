@@ -1,0 +1,13 @@
+<form class="flashing-border-container mat-display-1">
+  <mat-form-field class="flashing-border-field">
+    <input matInput placeholder="Text to display" autofocus [formControl]="fieldValue">
+    <button mat-button *ngIf="fieldValue.value" matSuffix mat-icon-button aria-label="Clear" (click)="fieldValue.setValue('')">
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-error *ngIf="fieldValue.hasError('alphanumeric')">
+      Message must be completely alphanumeric! (letters, numbers, simple symbols)
+    </mat-error>
+  </mat-form-field>
+  <br/>
+  <joul-submitter [method]="method" [field]="fieldValue"></joul-submitter>
+</form>

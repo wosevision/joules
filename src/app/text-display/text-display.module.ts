@@ -8,6 +8,7 @@ import { MaterialModule } from '../shared/material.module';
 
 import { SingleLineComponent } from './single-line/single-line.component';
 import { MultiLineComponent } from './multi-line/multi-line.component';
+import { FlashingBorderComponent } from './flashing-border/flashing-border.component';
 
 @NgModule({
   imports: [
@@ -37,6 +38,6 @@ import { MultiLineComponent } from './multi-line/multi-line.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [SingleLineComponent, MultiLineComponent]
+  declarations: [SingleLineComponent, MultiLineComponent, FlashingBorderComponent]
 })
 export class TextDisplayModule {}
