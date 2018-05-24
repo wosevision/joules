@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { FormControl } from '@angular/forms';
-import { MatSnackBar } from '@angular/material';
-
-import { of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 
 import { MethodsService, Method } from '../../core/methods.service';
 import { alphanumeric } from '../../shared/validators';
