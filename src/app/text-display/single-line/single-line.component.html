@@ -1,7 +1,7 @@
 <form class="single-line-container mat-display-1">
   <mat-form-field class="single-line-field">
     <input matInput placeholder="Text to display" autofocus [formControl]="fieldValue">
-    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+    <button mat-button *ngIf="fieldValue.value" matSuffix mat-icon-button aria-label="Clear" (click)="fieldValue.setValue('')">
       <mat-icon>close</mat-icon>
     </button>
     <mat-error *ngIf="fieldValue.hasError('alphanumeric')">

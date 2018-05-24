@@ -11,7 +11,6 @@ import { alphanumeric } from '../../shared/validators';
 })
 export class SingleLineComponent implements OnInit {
   fieldValue = new FormControl('', alphanumeric());
-  value;
 
   constructor(private methods: MethodsService) {}
 
