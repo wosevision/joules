@@ -12,8 +12,9 @@
       </mat-form-field>
     </mat-list-item>
   </mat-list>
-  <!-- <button mat-stroked-button color="primary" (click)="submitText()" [disabled]="fieldValue.disabled">Fire in the hole!</button> -->
 </form>
 <button mat-button mat-icon-button aria-label="Add" (click)="newValue()">
   <mat-icon>add</mat-icon>
 </button>
+<br/>
+<joul-submitter [method]="method" [field]="fieldValue"></joul-submitter>

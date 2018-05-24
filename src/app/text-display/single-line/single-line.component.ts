@@ -11,19 +11,11 @@ import { alphanumeric } from '../../shared/validators';
 })
 export class SingleLineComponent implements OnInit {
   fieldValue = new FormControl('', alphanumeric());
+  method: Method.SingleLine = Method.SingleLine;
 
   constructor(private methods: MethodsService) {}
 
   ngOnInit() {
     this.fieldValue.valueChanges.subscribe(console.log);
-  }
-
-  submitText() {
-    if (this.fieldValue.valid) {
-      this.fieldValue.disable();
-      this.methods
-        .send(Method.SingleLine, [this.fieldValue.value])
-        .subscribe(value => this.fieldValue.enable());
-    }
   }
 }

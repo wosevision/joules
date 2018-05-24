@@ -9,5 +9,5 @@
     </mat-error>
   </mat-form-field>
   <br/>
-  <button mat-stroked-button color="primary" (click)="submitText()" [disabled]="fieldValue.disabled">Fire in the hole!</button>
+  <joul-submitter [method]="method" [field]="fieldValue"></joul-submitter>
 </form>

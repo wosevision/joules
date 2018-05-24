@@ -27,13 +27,4 @@ export class MultiLineComponent implements OnInit {
   newValue() {
     this.fieldValues.push(new FormControl('', alphanumeric()));
   }
-
-  // submitText() {
-  //   if (this.fieldValues.valid) {
-  //     this.fieldValues.disable();
-  //     this.methods
-  //       .send(Method.SingleLine, [this.fieldValues.value])
-  //       .subscribe(value => this.fieldValues.enable());
-  //   }
-  // }
 }
