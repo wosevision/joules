@@ -27,6 +27,10 @@ import { HomeComponent } from './home/home.component';
         {
           path: 'text-display',
           loadChildren: './text-display/text-display.module#TextDisplayModule'
+        },
+        {
+          path: 'animation',
+          loadChildren: './animation/animation.module#AnimationModule'
         }
       ],
       { enableTracing: true }
