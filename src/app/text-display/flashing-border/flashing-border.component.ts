@@ -11,5 +11,5 @@ import { alphanumeric } from '../../shared/validators';
 })
 export class FlashingBorderComponent {
   fieldValue = new FormControl('', alphanumeric());
-  method: Method.SingleLine = Method.SingleLine;
+  method: Method.FlashingBorder = Method.FlashingBorder;
 }

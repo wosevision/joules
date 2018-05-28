@@ -28,6 +28,10 @@ import { FlashingBorderComponent } from './flashing-border/flashing-border.compo
             component: MultiLineComponent
           },
           {
+            path: 'flashing-border',
+            component: FlashingBorderComponent
+          },
+          {
             path: '',
             redirectTo: '/single-line',
             pathMatch: 'full'

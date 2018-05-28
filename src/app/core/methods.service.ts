@@ -10,6 +10,7 @@ export const enum Method {
   Clear = 'clear',
   SingleLine = 'single-line',
   MultiLine = 'multi-line',
+  FlashingBorder = 'flashing-border',
   Clock = 'clock'
 }
 
