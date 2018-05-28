@@ -29,7 +29,7 @@ delay = 0.03
 
 # Change the lines below to your own message
 # lines = ["Only 5% of batteries in Canada are properly recycled a year.", "28% of consumers throw their batteries in the trash...", "...Throw them in my mouth instead!", "81% of consumers agreed that they would recycle their batteries...", "...if it was more convenient!", "Canadians throw away over 745 million batteries a year!"]
-lines = sys.argv
+lines = sys.argv[1:]
 
 # Determine how far apart each line should be spaced vertically
 line_height = scrollphathd.DISPLAY_HEIGHT + 2

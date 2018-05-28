@@ -13,6 +13,7 @@ export class MultiLineComponent {
   fields = this.fb.group({
     fieldValues: this.fb.array([this.newControl()])
   });
+  method: Method.MultiLine = Method.MultiLine;
 
   get fieldValues(): FormArray {
     return this.fields.get('fieldValues') as FormArray;
