@@ -11,6 +11,7 @@ export const enum Method {
   SingleLine = 'single-line',
   MultiLine = 'multi-line',
   FlashingBorder = 'flashing-border',
+  TwitterHashtag = 'twitter-hashtag',
   Clock = 'clock'
 }
 

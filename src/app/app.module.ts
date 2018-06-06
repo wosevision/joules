@@ -31,6 +31,10 @@ import { HomeComponent } from './home/home.component';
         {
           path: 'animation',
           loadChildren: './animation/animation.module#AnimationModule'
+        },
+        {
+          path: 'connected',
+          loadChildren: './connected/connected.module#ConnectedModule'
         }
       ],
       { enableTracing: true }

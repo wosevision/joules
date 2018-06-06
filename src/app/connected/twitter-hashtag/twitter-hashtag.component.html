@@ -1,3 +1,17 @@
-<p>
-  twitter-hashtag works!
-</p>
+<form class="twitter-hashtag-container mat-display-1">
+  <mat-form-field class="twitter-hashtag-field">
+    <span matPrefix>#&nbsp;</span>
+    <input matInput placeholder="Hashtag" autofocus [formControl]="fieldValue" [matAutocomplete]="suggest">
+    <button mat-button *ngIf="fieldValue.value" matSuffix mat-icon-button aria-label="Clear" (click)="fieldValue.setValue('')">
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-error *ngIf="fieldValue.hasError('alphanumeric')">
+      Message must be completely alphanumeric! (letters, numbers, simple symbols)
+    </mat-error>
+  </mat-form-field>
+  <mat-autocomplete #suggest="matAutocomplete">
+    <mat-option *ngFor="let suggestion of suggestions | async" [value]="suggestion">{{ suggestion.hashtag }}</mat-option>
+  </mat-autocomplete>
+  <br/>
+  <joul-submitter [method]="method" [field]="fieldValue"></joul-submitter>
+</form>
