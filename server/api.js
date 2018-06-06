@@ -1,13 +1,21 @@
 const path = require('path');
+const https = require('https');
 const express = require('express');
-const Gpio = require('onoff').Gpio;
+// const Gpio = require('onoff').Gpio;
 const PythonShell = require('python-shell');
 
 const router = express.Router();
 
 const routes = require('../common/routes.json');
 
-const mockResponse = (real, mock) => Gpio.accessible ? real() : () => setTimeout(mock, 1500);
+const mockResponse = (real, mock) => process.env.NODE_ENV === 'production' ? real() : () => setTimeout(mock, 1500);
+
+router.get(`/hashtags`, (req, res) => {
+  https.get(
+    `https://twitter.com/i/search/typeahead.json?count=20&filters=true&q=%23${req.query.q}&result_type=hashtags&src=COMPOSE`,
+    response => response.pipe(res)
+  )
+});
 
 let currentScript;
 const cleanup = () => currentScript && currentScript.terminate && currentScript.terminate();

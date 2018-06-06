@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "server": "nodemon server"
+    "server": "nodemon server",
+    "live": "NODE_ENV=production & node server"
   },
   "private": true,
   "dependencies": {
