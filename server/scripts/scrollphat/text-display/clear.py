@@ -9,4 +9,5 @@ def clear_exit():
 
     # Clear the display
     scrollphathd.clear()
+    scrollphathd.show()
     sys.exit()
