@@ -51,8 +51,8 @@ def mainloop():
         try:
             scrollphathd.clear()
             status = q.get(False)
-            scrollphathd.write_string(status,font=font5x7, brightness=0.1)
-            status_length = scrollphathd.write_string(status, x=0, y=0,font=font5x7, brightness=0.1)
+            scrollphathd.write_string(status,font=font5x7, brightness=0.3)
+            status_length = scrollphathd.write_string(status, x=0, y=0,font=font5x7, brightness=0.3)
             time.sleep(0.25)
 
             while status_length > 0:
