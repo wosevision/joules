@@ -34,7 +34,8 @@ const makeRoutes = (paths, group) =>
                 if (error) {
                   console.error(error);
                   // res.status(500).send({ success: false, error })
-                  currentScript && currentScript.terminate();
+                  // currentScript && currentScript.terminate();
+                  process.exit(0);
                 }
               }
             );
