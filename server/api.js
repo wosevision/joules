@@ -20,7 +20,7 @@ const monitor = (script, response) => {
 const makeRoutes = (paths, group) =>
   paths.map(p => p.group
     ? makeRoutes(p.paths, p.group)
-    : console.log(`Route created: /${p}`) && router.post(`/${p}`, (req, res) => {
+    : router.post(`/${p}`, (req, res) => {
       const args = req.body.message;
       // response
       if (args && Array.isArray(args)) {
