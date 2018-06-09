@@ -19,7 +19,7 @@ const monitor = (script, response) => {
 
 const makeRoutes = (paths, group) =>
   paths.map(p => p.group
-    ? makeRoutes(p.paths, p.group)
+    ? makeRoutes(p.paths, group ? `${group}/${p.group}` : p.group)
     : router.post(`/${p}`, (req, res) => {
       const args = req.body.message;
       // response
