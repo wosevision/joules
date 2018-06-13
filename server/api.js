@@ -1,7 +1,7 @@
+const os = require('os');
 const path = require('path');
 const https = require('https');
 const express = require('express');
-const ip = require('ip');
 const PythonShell = require('python-shell');
 
 const router = express.Router();
@@ -11,22 +11,21 @@ const scriptPath = path.resolve(path.join(__dirname, 'scripts'));
 
 let currentScript = PythonShell.run(
   `scrollphat/text-display/single-line.py`,
-  { args: [ip.address()], scriptPath, mode: 'binary' },
+  { args: [getIPAddress()], scriptPath, mode: 'binary' },
   handleError
 );
 
 function cleanup() {
   currentScript && currentScript.terminate && currentScript.terminate();
 }
-function monitor(script, response) {
-  script.once('message', message => response.status(200).send({ message }));
-  script.once('error', error => response.status(400).send(error));
-};
 function handleError(error) {
   if (error) {
     console.error(error);
     process.exit(1);
   }
+}
+function getIPAddress() {
+  return os.networkInterfaces()['wlan0'].find(connection => connection.family === 'IPv4').address;
 }
 
 const makeRoutes = (paths, group) =>
