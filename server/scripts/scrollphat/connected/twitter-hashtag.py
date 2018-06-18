@@ -2,6 +2,7 @@
 
 # made by @mrglennjones with help from @pimoroni & pb
 
+import os
 import sys
 import time
 import unicodedata
@@ -25,11 +26,11 @@ keyword = '#' + sys.argv[1]
 
 # enter your twitter app keys here
 # you can get these at apps.twitter.com
-consumer_key = '***PWNED***'
-consumer_secret = '***PWNED***'
+consumer_key = os.getenv('CONSUMER_KEY', '')
+consumer_secret = os.getenv('CONSUMER_SECRET', '')
 
-access_token = '***PWNED***'
-access_token_secret = '***PWNED***'
+access_token = os.getenv('ACCESS_TOKEN', '')
+access_token_secret = os.getenv('ACCESS_TOKEN_SECRET', '')
 
 if consumer_key == '' or consumer_secret == '' or access_token == '' or access_token_secret == '':
     print("You need to configure your Twitter API keys! Edit this file for more information!")
